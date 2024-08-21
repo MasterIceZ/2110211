@@ -1,0 +1,5 @@
+*.out
+*.in
+*.sol
+
+.DS_Store
