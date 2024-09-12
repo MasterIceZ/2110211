@@ -55,11 +55,16 @@ faces = [
 
 s = 0.3
 
+vtx = []
 for v in vertices:
-    print(f"renderer.getVertexContainer(0).addVertex({v[0] * s}, {v[1] * s}, {v[2] * s});")
+    #print(f"renderer.getVertexContainer(0).addVertex({v[0] * s}, {v[1] * s}, {v[2] * s});")
+    vtx.append([v[0] * s, v[1] * s, v[2] * s])
 
+print(vtx)
 print()
 
+fcs = []
 for t in faces:
-    print(f"renderer.getVertexContainer(0).addFace({t[0]}, {t[1]}, {t[2]});")
-
+    # print(f"renderer.getVertexContainer(0).addFace({t[0]}, {t[1]}, {t[2]});")
+    fcs.append([t[0], t[1], t[2]])
+print(fcs)
