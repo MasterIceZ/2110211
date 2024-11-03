@@ -5,16 +5,21 @@
 template <typename T>
 void CP::vector<T>::insert(iterator position,iterator first,iterator last) {
   //write your code here
-  int insertion_size = last - first;
-  ensureCapacity(mSize + insertion_size);
-  int insertion_index = position - begin();
-  for(int i=mSize-1; i>=insertion_index; --i) {
-    mData[i + insertion_size] = mData[i];
+  int insert_size = last - first;
+  int new_size = mSize + insert_size;
+  int position_index = position - begin();
+  // std::cerr << "X: " << position_index << "\n";
+  ensureCapacity(new_size);
+  for(int i=mSize-1; i>=position_index; --i) {
+    mData[i + insert_size] = mData[i];
+    // std::cerr << "D: " << i + insert_size << " " << i << "\n";
   }
-  for(int i=0; i<insertion_size; ++i) {
-    mData[insertion_index + i] = *(first + i);
+  int index = position_index;
+  for(auto it=first; it!=last; ++it) {
+    mData[index] = *it;
+    index++;
   }
-  mSize += insertion_size;
+  mSize = new_size;
 }
 
 #endif

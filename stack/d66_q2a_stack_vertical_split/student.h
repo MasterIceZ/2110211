@@ -8,7 +8,7 @@ template <typename T>
 void CP::stack<T>::v_split(std::vector<std::stack<T>> &output, size_t k) const {
   // Write code here
   for(int i=1; i<=k; ++i) {
-    output.emplace_back(std::stack<int>());
+    output.push_back(std::stack<T>());
   }
   int base = mSize / k;
   int remains = mSize % k;
@@ -16,7 +16,7 @@ void CP::stack<T>::v_split(std::vector<std::stack<T>> &output, size_t k) const {
   for(int i=mSize-1; i>=0; ) {
     int to_add = base + (remains >= 1);
     for(int j=i-to_add+1, c=to_add; c > 0; --c, ++j) {
-      output[t].emplace(mData[j]);
+      output[t].push(mData[j]);
     }
     remains--;
     t++;
